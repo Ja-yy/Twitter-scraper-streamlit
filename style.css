@@ -1,0 +1,13 @@
+.stApp [data-testid="stForm"]{
+    box-shadow: 1px 1px rgb(250, 250, 250) ;
+}
+.stApp [data-baseweb="input"] {
+  box-shadow: 1px 1px rgb(250, 250, 250) ;
+} 
+.stApp [data-baseweb="select"] {
+  box-shadow: 1px 1px rgb(250, 250, 250) ;
+}
+  
+#MainMenu {
+  display:none;
+  }
