@@ -44,7 +44,7 @@ pipenv shell
 ### STEP 02- Install the requirements
 
 ```bash
-pipenv install -r requirements.txt
+pipenv install
 ```
 
 ### STEP 03 - Run Streamlit
