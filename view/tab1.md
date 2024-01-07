@@ -1,13 +1,5 @@
+Twitter scraper tool designed to simplify your Twitter data exploration. With this application, effortlessly gather user `IDs`, `names`, and `profile links` based on your specified keywords. Dive into the vast world of Twitter with ease and efficiency, showcasing the power of data extraction and filtering at your fingertips..
 
-Twitter scraper  to automatically **scrape** and **collect** public data from **Twitter profiles** and **Twitter search results*** (keyword or hashtag).
-Retrieve the data you want in JSON, without any **blocking**.
+---
 
-> You will get to use 3 different bot <br> 
-- `Twitter handler bot` (Help to scrape **twitter prifile hadler** with **link**)
-- `Twitter tweet scper` (Help to scrape tweet form **hashtags** and **keyword**)
-- `Twitter profile detalis scaper` (Help to scrape particular profile **details**)
-
-
-
-***
-**`Note`**  I made this bot only for educational purposes and does not promote any illegal activity or  harm any community.
+**`Please note:`** I created this tool solely for educational purposes and do not endorse any illegal activities or intend to cause harm to any community. This project aims to showcase the capabilities of data extraction in a responsible and ethical manner."

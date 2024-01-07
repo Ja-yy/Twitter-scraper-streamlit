@@ -1,22 +1,22 @@
-from selenium_scripts.utils.driver import Driver
-from selenium_scripts.twitter.twitter_bot_helper import TwitterBotHelper
-
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import streamlit as st
+from selenium.common import exceptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.common import exceptions
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
-import streamlit as st
+from selenium_scripts.twitter.twitter_bot_helper import TwitterBotHelper
+from selenium_scripts.utils.driver import Driver
 
 twitterInstance = None
+
 
 class TwitterBot(TwitterBotHelper):
     def __init__(self, headless=False, browser_name="chrome"):
         self.driver = Driver(headless, browser_name).get_driver()
 
     def redirect_to_login(self):
-        URL = "https://twitter.com/login"
+        URL = "https://twitter.com/i/flow/login"
         try:
             self.driver.get(URL)
             return self.driver
@@ -25,14 +25,20 @@ class TwitterBot(TwitterBotHelper):
 
     def login(self, email, password):
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, "text"))).send_keys(email, Keys.RETURN)
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, "password"))).send_keys(password, Keys.RETURN)
-            WebDriverWait(self.driver, 10).until(EC.url_to_be("https://twitter.com/home"))
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.NAME, "text"))
+            ).send_keys(email, Keys.RETURN)
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.NAME, "password"))
+            ).send_keys(password, Keys.RETURN)
+            WebDriverWait(self.driver, 10).until(
+                EC.url_to_be("https://twitter.com/home")
+            )
             return self.driver
         except exceptions.TimeoutException:
             st.error("Timeout while waiting for Login screen", icon="🚨")
 
-    def search_bar(self,search_term):
+    def search_bar(self, search_term):
         try:
             xpath_search = '//input[@aria-label="Search query"]'
             search_input = self.driver.find_element(By.XPATH, xpath_search)
@@ -63,5 +69,3 @@ def create(headless=False, browser_name="chrome"):
     global twitterInstance
     twitterInstance = TwitterBot(headless, browser_name)
     return twitterInstance
-
-
